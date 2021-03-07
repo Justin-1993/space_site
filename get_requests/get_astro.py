@@ -1,8 +1,7 @@
 import requests
 import json
 
-# nasa api key 5aVi5rGAMG5dUXH5KxpmZJWVIdGDjH4f8Os1EEdx
-
+from .secret import nasa_api
 def get_astro_name():
     astro_url = 'http://api.open-notify.org/astros.json'
     astro_req = requests.get(astro_url)
@@ -20,7 +19,7 @@ def get_astro_profile(name):
     astro_req = astro_req.content.decode('utf-8')
     astro_req = json.loads(astro_req)
 
-    return astro_req['extract_html']
+    return astro_req
 
 
 def get_iss_now():
@@ -36,7 +35,7 @@ def get_iss_now():
     return f'{lon}, {lat}'
 
 def nasa_pic_of_the_day():
-    nasa_potd_url = "https://api.nasa.gov/planetary/apod?api_key=5aVi5rGAMG5dUXH5KxpmZJWVIdGDjH4f8Os1EEdx"
+    nasa_potd_url = f"https://api.nasa.gov/planetary/apod?api_key={nasa_api}"
 
     potd_req = potd_req = requests.get(nasa_potd_url)
     potd_req = potd_req.content.decode('utf-8')
@@ -46,3 +45,7 @@ def nasa_pic_of_the_day():
 
     return potd_url
 
+
+
+if __name__ == "__main__":
+    pass

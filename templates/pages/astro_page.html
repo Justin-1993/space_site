@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ name }}</h1>
+
+{% if astro_profile['thumbnail']['source'] | length %}
+<img src="{{ astro_profile['thumbnail']['source']}}" alt="">
+{% else %}
+<p>No pic</p>
+{% endif %}
+<div>
+    {{astro_profile['extract']}}
+
+</div>
+
+{% endblock %}

@@ -16,13 +16,15 @@ def test_index():
 def test_about():
     return render_template('pages/about.html')
 
-@app.route('/blog', methods=['GET'])
-def test_blog():
-    return render_template('pages/blog.html')
+@app.route('/astronauts', methods=['GET'])
+def astronauts():
+    astro_names = get_astro_name()
+    return render_template('pages/astronauts.html', astro_names=astro_names)
 
-@app.route('/contact', methods=['GET'])
-def test_contact():
-    return render_template('pages/contact.html')
+@app.route('/astronauts/<name>', methods=['GET'])
+def astronauts_page(name):
+    astro_profile = get_astro_profile(name)
+    return render_template('pages/astro_page.html', name=name, astro_profile=astro_profile)
 
 @app.route('/proj1', methods=['GET'])
 def test_proj1():
